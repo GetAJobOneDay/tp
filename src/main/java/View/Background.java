@@ -47,6 +47,12 @@ public class Background extends Pane {
         setOfAction.put(code,false);
     }
     public boolean isPressed(KeyCode key){
+        if(setOfAction.containsKey(KeyCode.O)){
+            for(Character c:arrChar){
+                c.fallingDown();
+                ball.fallDown();
+            }
+        }
         return setOfAction.getOrDefault(key,false);
     }
 

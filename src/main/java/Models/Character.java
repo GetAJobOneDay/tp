@@ -21,7 +21,7 @@ public class Character extends Pane {
     private KeyCode movement;
     private boolean canJump,isJump;
     private int score=0;
-
+    public String action;
     public Character(int x,int y,KeyCode left,KeyCode right,KeyCode up,KeyCode spx,String player){
         this.mr = false;
         this.ml = false;
@@ -51,12 +51,12 @@ public class Character extends Pane {
         setTranslateY(y);
     }
     public void trace() {
-        String action="";
+         action="";
         if(isJump){
             action="jump";
         }else if(mr){
             action="moveRight";
-        }else if(ml){
+        }else if(ml ){
             action="moveLeft";
         }
         logger.info("x:{} y:{} vx:{} vy:{} score:{} action:{}", x, y, xValo, yValo,score,action);
@@ -127,6 +127,7 @@ public class Character extends Pane {
         isJump=true;
     }
     public void dive(){
+        action="dive";
         jump();
         YTransfer();
         moveright();
@@ -164,5 +165,9 @@ public class Character extends Pane {
     }
     public boolean isFalling(){
         return isFalling;
+    }
+
+    public void fallingDown() {
+        isFalling=true;
     }
 }

@@ -6,8 +6,11 @@ import javafx.scene.Scene;
 import javafx.stage.Stage;
 
 public class Launcher extends Application {
+    public static Stage stage;
+
     @Override
     public void start(Stage stage) throws Exception {
+        Launcher.stage=stage;
         Background bg = new Background();
         GameLoop game = new GameLoop(bg);
         Scene scene = new Scene(bg);

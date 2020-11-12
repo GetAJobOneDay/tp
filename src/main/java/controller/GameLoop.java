@@ -5,6 +5,8 @@ import Models.Character;
 import View.Background;
 import View.Score;
 import javafx.application.Platform;
+import javafx.scene.control.Label;
+import javafx.scene.layout.Pane;
 
 import java.util.ArrayList;
 
@@ -22,6 +24,9 @@ public class GameLoop implements Runnable{
     public void update(){
         ArrayList<Character> c = background.getArrChar();
         for(Character ch:c){
+            if(ch.getPlayer()=="computer"){
+                ch.setScaleX(-1);
+            }
             if(background.isPressed(ch.getLeft())){
                 ch.moveLeft();
                 ch.XTransfer();
@@ -44,7 +49,18 @@ public class GameLoop implements Runnable{
                 ch.dive();
                 ch.getImageView().ticjtock();
             }
-            //ch.trace();
+            if(ch.getY()>400){
+                running=false;
+                running=false;
+                System.out.println("hi");
+                Pane pane = new Pane();
+                Label label = new Label("GAME OVER");
+                pane.getChildren().add(label);
+                pane.getChildren().get(0).setTranslateX(130);
+                pane.getChildren().get(0).setTranslateY(130);
+                Launcher.stage.getScene().setRoot(pane);
+            }
+            ch.trace();
         }
     }
     public void gmaeplay(){

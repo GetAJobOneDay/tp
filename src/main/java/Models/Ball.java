@@ -58,7 +58,7 @@ public class Ball extends Pane {
         y=y-100;
         setTranslateY(y);
             if(cc.getPlayer().equals("player")){
-                if(cc.getXvalo()!=0 && cc.isFalling()){
+                if(cc.action=="jump"){
                     System.out.println("here");
                     x=x+60;
                 }else{
@@ -91,5 +91,9 @@ public class Ball extends Pane {
         if(isFalling && y<=350){
             isFalling=false;
         }
+    }
+
+    public void fallDown() {
+            isFalling=true;
     }
 }
